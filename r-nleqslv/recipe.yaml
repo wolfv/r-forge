@@ -1,0 +1,33 @@
+context: {}
+
+package:
+  name: r-nleqslv
+  version: 3.3.5
+
+source:
+- url: https://cran.r-project.org/src/contrib/nleqslv_3.3.5.tar.gz
+  md5: 156b1b2aa6fb3d7d2a08ee869a6c42a1
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - make
+  host:
+    - r-base
+
+about:
+  summary: Solve Systems of Nonlinear Equations
+  description: |-
+    Solve a system of nonlinear equations using a Broyden or a
+    Newton method with a choice of global strategies such as line
+    search and trust region. There are options for using a
+    numerical or user supplied Jacobian, for specifying a banded
+    numerical Jacobian and for allowing a singular or
+    ill-conditioned Jacobian.
+  license: GPL-2.0-or-later
+  repository: https://github.com/cran/nleqslv
+

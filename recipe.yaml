@@ -1,0 +1,68 @@
+context: {}
+
+package:
+  name: r-rstan
+  version: 2.32.6
+
+source:
+- url: https://cran.r-project.org/src/contrib/rstan_2.32.6.tar.gz
+  md5: 991d3158bfff39b6e130e6cdbbf0bb43
+
+build:
+  script: R CMD INSTALL --build .
+  python: {}
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base >=3.4.0
+  - r-rcpp >=1.0.7
+  - r-rcppeigen >=0.3.4.0.0
+  - r-bh >=1.75.0-0
+  - r-stanheaders >=2.32.0
+  - r-rcppparallel >=5.1.4
+  run:
+  - r-methods
+  - r-stats4
+  - r-inline >=0.3.19
+  - r-gridextra >=2.3
+  - r-rcpp >=1.0.7
+  - r-rcppparallel >=5.1.4
+  - r-loo >=2.4.1
+  - r-pkgbuild >=1.2.0
+  - r-quickjsr
+  - r-ggplot2 >=3.3.5
+  # -  r-testthat >=3.0.4  # suggested
+  # -  r-parallel  # suggested
+  # -  r-kernsmooth  # suggested
+  # -  r-shinystan  # suggested
+  # -  r-bayesplot  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-rstantools  # suggested
+  # -  r-rstudioapi  # suggested
+  # -  r-matrix  # suggested
+  # -  r-knitr  # suggested
+  # -  r-coda  # suggested
+  # -  r-v8  # suggested
+
+about:
+  homepage: https://mc-stan.org/rstan/, https://discourse.mc-stan.org
+  summary: R Interface to Stan
+  description: |-
+    User-facing R functions are provided to parse, compile,
+    test, estimate, and analyze Stan models by accessing the
+    header-only Stan library provided by the 'StanHeaders' package.
+    The Stan project develops a probabilistic programming language
+    that implements full Bayesian statistical inference via Markov
+    Chain Monte Carlo, rough Bayesian inference via 'variational'
+    approximation, and (optionally penalized) maximum likelihood
+    estimation via optimization. In all three cases, automatic
+    differentiation is used to quickly and accurately evaluate
+    gradients without burdening the user with the need to derive
+    the partial derivatives.
+  license: GPL-3.0-or-later
+  repository: https://github.com/cran/rstan
+

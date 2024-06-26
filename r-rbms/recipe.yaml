@@ -1,0 +1,124 @@
+context: {}
+
+package:
+  name: r-brms
+  version: 2.21.0
+
+source:
+- url: https://cran.r-project.org/src/contrib/brms_2.21.0.tar.gz
+  md5: 9b5c6c14a902b769e4558b5436fa631a
+
+build:
+  script: R CMD INSTALL --build .
+  noarch: generic
+
+requirements:
+  host:
+  - r-base >=3.6.0
+  - r-rstan >=2.29.0
+  - r-ggplot2 >=2.0.0
+  - r-loo >=2.3.1
+  - r-posterior >=1.0.0
+  - r-matrix >=1.1.1
+  - r-mgcv >=1.8-13
+  - r-rstantools >=2.1.1
+  - r-bayesplot >=1.5.0
+  - r-bridgesampling >=0.3-0
+  - r-glue >=1.3.0
+  - r-rlang >=1.0.0
+  - r-future >=1.19.0
+  - r-future.apply >=1.0.0
+  - r-matrixstats
+  - r-nleqslv
+  - r-nlme
+  - r-coda
+  - r-abind
+  - tbb
+  - tbb-devel
+  # - r-stats
+  # - r-utils
+  # - r-parallel
+  # - r-grdevices
+  - r-backports
+  run:
+  - r-rstan >=2.29.0
+  - r-ggplot2 >=2.0.0
+  - r-loo >=2.3.1
+  - r-posterior >=1.0.0
+  - r-matrix >=1.1.1
+  - r-mgcv >=1.8-13
+  - r-rstantools >=2.1.1
+  - r-bayesplot >=1.5.0
+  - r-bridgesampling >=0.3-0
+  - r-glue >=1.3.0
+  - r-rlang >=1.0.0
+  - r-future >=1.19.0
+  - r-future.apply >=1.0.0
+  - r-matrixstats
+  - r-nleqslv
+  - r-nlme
+  - r-coda
+  - r-abind
+  # - r-stats
+  # - r-utils
+  # - r-parallel
+  # - r-grdevices
+  - r-backports
+  - tbb-devel
+
+  # -  r-testthat >=0.9.1  # suggested
+  # -  r-emmeans >=1.4.2  # suggested
+  # -  r-cmdstanr >=0.5.0  # suggested
+  # -  r-projpred >=2.0.0  # suggested
+  # -  r-shinystan >=2.4.0  # suggested
+  # -  r-splines2 >=0.5.0  # suggested
+  # -  r-rwiener  # suggested
+  # -  r-rtdists  # suggested
+  # -  r-extradistr  # suggested
+  # -  r-processx  # suggested
+  # -  r-mice  # suggested
+  # -  r-spdep  # suggested
+  # -  r-mnormt  # suggested
+  # -  r-lme4  # suggested
+  # -  r-mcmcglmm  # suggested
+  # -  r-ape  # suggested
+  # -  r-arm  # suggested
+  # -  r-statmod  # suggested
+  # -  r-digest  # suggested
+  # -  r-diffobj  # suggested
+  # -  r-r.rsp  # suggested
+  # -  r-gtable  # suggested
+  # -  r-shiny  # suggested
+  # -  r-knitr  # suggested
+  # -  r-rmarkdown  # suggested
+
+about:
+  homepage: |-
+    https://github.com/paul-buerkner/brms,
+    https://discourse.mc-stan.org/,
+    https://paul-buerkner.github.io/brms/
+  summary: Bayesian Regression Models using 'Stan'
+  description: |-
+    Fit Bayesian generalized (non-)linear multivariate
+    multilevel models using 'Stan' for full Bayesian inference. A
+    wide range of distributions and link functions are supported,
+    allowing users to fit -- among others -- linear, robust linear,
+    count data, survival, response times, ordinal, zero-inflated,
+    hurdle, and even self-defined mixture models all in a
+    multilevel context. Further modeling options include both
+    theory-driven and data-driven non-linear terms,
+    auto-correlation structures, censoring and truncation,
+    meta-analytic standard errors, and quite a few more. In
+    addition, all parameters of the response distribution can be
+    predicted in order to perform distributional regression. Prior
+    specifications are flexible and explicitly encourage users to
+    apply prior distributions that actually reflect their prior
+    knowledge. Models can easily be evaluated and compared using
+    several methods assessing posterior or prior predictions.
+    References: Bürkner (2017) <doi:10.18637/jss.v080.i01>; Bürkner
+    (2018) <doi:10.32614/RJ-2018-017>; Bürkner (2021)
+    <doi:10.18637/jss.v100.i05>; Carpenter et al. (2017)
+    <doi:10.18637/jss.v076.i01>.
+  license: GPL-2.0-only
+  repository: https://github.com/cran/brms
+

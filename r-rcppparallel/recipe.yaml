@@ -1,0 +1,41 @@
+package:
+  name: r-rcppparallel
+  version: 5.1.7
+
+source:
+- url: https://cran.r-project.org/src/contrib/RcppParallel_5.1.7.tar.gz
+  md5: 3eedbd5476fd033c472824996b339b73
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+  # -  r-rcpp  # suggested
+  # -  r-runit  # suggested
+  # -  r-knitr  # suggested
+  # -  r-rmarkdown  # suggested
+
+tests:
+  - script:
+      - R -e "library('RcppParallel')"
+
+about:
+  homepage: https://rcppcore.github.io/RcppParallel/
+  summary: Parallel Programming Tools for 'Rcpp'
+  description: |-
+    High level functions for parallel programming with 'Rcpp'.
+    For example, the 'parallelFor()' function can be used to
+    convert the work of a standard serial "for" loop into a
+    parallel one and the 'parallelReduce()' function can be used
+    for accumulating aggregate or other values.
+  license: GPL-3.0-or-later
+  repository: https://github.com/RcppCore/RcppParallel
+

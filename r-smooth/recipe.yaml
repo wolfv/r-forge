@@ -1,0 +1,80 @@
+context: {}
+
+package:
+  name: r-smooth
+  version: 4.0.2
+
+source:
+- url: https://cran.r-project.org/src/contrib/smooth_4.0.2.tar.gz
+  md5: 5d7e3aed6af608c7ee14ce75dacb3102
+
+build:
+  script: 
+    content: R CMD INSTALL --build .
+    env:
+      PKG_CPPFLAGS: "-DHAVE_WORKING_LOG1P"
+
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base >=3.0.2
+  - r-rcpp
+  - r-rcpparmadillo >=0.8.100.0.0
+  # - r-graphics
+  # - r-grdevices
+  - r-pracma
+  - r-statmod
+  - r-mass
+  - r-nloptr
+  # - r-utils
+  - r-xtable
+  - r-greybox
+  - r-generics
+  - r-zoo
+  run:
+  - r-rcpp >=0.12.3
+  - r-greybox
+  # - r-stats
+  - r-generics >=0.1.2
+  # - r-graphics
+  # - r-grdevices
+  - r-pracma
+  - r-statmod
+  - r-mass
+  - r-nloptr
+  # - r-utils
+  - r-xtable
+  - r-zoo
+  # -  r-legion  # suggested
+  # -  r-numderiv  # suggested
+  # -  r-testthat  # suggested
+  # -  r-knitr  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-domc  # suggested
+  # -  r-doparallel  # suggested
+  # -  r-foreach  # suggested
+
+about:
+  homepage: https://github.com/config-i1/smooth
+  summary: Forecasting Using State Space Models
+  description: |-
+    Functions implementing Single Source of Error state space
+    models for purposes of time series analysis and forecasting.
+    The package includes ADAM (Svetunkov, 2023,
+    <https://openforecast.org/adam/>), Exponential Smoothing
+    (Hyndman et al., 2008, <doi: 10.1007/978-3-540-71918-2>),
+    SARIMA (Svetunkov & Boylan, 2019 <doi:
+    10.1080/00207543.2019.1600764>), Complex Exponential Smoothing
+    (Svetunkov & Kourentzes, 2018, <doi:
+    10.13140/RG.2.2.24986.29123>), Simple Moving Average (Svetunkov
+    & Petropoulos, 2018 <doi: 10.1080/00207543.2017.1380326>) and
+    several simulation functions. It also allows dealing with
+    intermittent demand based on the iETS framework (Svetunkov &
+    Boylan, 2019, <doi: 10.13140/RG.2.2.35897.06242>).
+  license: LGPL-2.0-only
+  repository: https://github.com/cran/smooth
+

@@ -1,0 +1,96 @@
+context: {}
+
+package:
+  name: r-mvgam
+  version: 1.1.1
+
+source:
+- url: https://cran.r-project.org/src/contrib/mvgam_1.1.1.tar.gz
+  md5: 671622a760711258fc0d6408ef4d5b88
+
+build:
+  script: R CMD INSTALL --build .
+  python: {}
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base >=3.6.0
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rstan >=2.29.0
+  - r-posterior >=1.0.0
+  - r-loo >=2.3.1
+  - r-rstantools >=2.1.1
+  - r-bayesplot >=1.5.0
+  - r-ggplot2 >=2.0.0
+  - r-matrixstats
+  - r-pbapply
+  - r-mvnfast
+  - r-purrr
+  - r-zoo
+  - r-scoringrules
+  - r-smooth
+  - r-dplyr
+  - r-magrittr
+  - r-matrix
+  - r-rlang
+  # missing?
+  - r-marginaleffects
+  - r-brms
+  - r-insight
+
+  run:
+  - r-rstan >=2.29.0
+  - r-posterior >=1.0.0
+  - r-loo >=2.3.1
+  - r-rstantools >=2.1.1
+  - r-bayesplot >=1.5.0
+  - r-ggplot2 >=2.0.0
+  - r-matrixstats
+  - r-pbapply
+  - r-mvnfast
+  - r-purrr
+  - r-zoo
+  - r-scoringrules
+  - r-smooth
+  - r-dplyr
+  - r-magrittr
+  - r-matrix
+  - r-rlang
+  # -  r-cmdstanr >=0.5.0  # suggested
+  # -  r-tweedie  # suggested
+  # -  r-splines2  # suggested
+  # -  r-extradistr  # suggested
+  # -  r-wrswor  # suggested
+  # -  r-xts  # suggested
+  # -  r-lubridate  # suggested
+  # -  r-knitr  # suggested
+  # -  r-collapse  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-rjags  # suggested
+  # -  r-coda  # suggested
+  # -  r-runjags  # suggested
+  # -  r-usethis  # suggested
+  # -  r-testthat  # suggested
+
+about:
+  homepage: |-
+    https://github.com/nicholasjclark/mvgam,
+    https://nicholasjclark.github.io/mvgam/
+  summary: Multivariate (Dynamic) Generalized Additive Models
+  description: |-
+    Fit Bayesian Dynamic Generalized Additive Models to sets
+    of time series. Users can build dynamic nonlinear State-Space
+    models that can incorporate semiparametric effects in
+    observation and process components, using a wide range of
+    observation families. Estimation is performed using Markov
+    Chain Monte Carlo with Hamiltonian Monte Carlo in the software
+    'Stan'. References: Clark & Wells (2022)
+    <doi:10.1111/2041-210X.13974>.
+  license: MIT
+  repository: https://github.com/cran/mvgam
+

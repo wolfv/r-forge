@@ -1,0 +1,65 @@
+context: {}
+
+package:
+  name: r-greybox
+  version: 2.0.1
+
+source:
+- url: https://cran.r-project.org/src/contrib/greybox_2.0.1.tar.gz
+  md5: fff62ff09cd76d31e0f7766b89558028
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base >=3.5.0
+  - r-rcpp
+  - r-pracma
+  - r-nloptr
+  - r-statmod
+  - r-zoo
+  - r-texreg
+  - r-xtable
+  - r-generics >=0.1.2
+
+  # - r-stats
+
+  run:
+  - r-generics >=0.1.2
+  - r-pracma
+  - r-nloptr
+  - r-statmod
+  - r-zoo
+  - r-texreg
+  - r-xtable
+  # -  r-smooth >=3.1.0  # suggested
+  # -  r-domc  # suggested
+  # -  r-doparallel  # suggested
+  # -  r-foreach  # suggested
+  # -  r-testthat  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-knitr  # suggested
+
+about:
+  homepage: https://github.com/config-i1/greybox
+  summary: Toolbox for Model Building and Forecasting
+  description: |-
+    Implements functions and instruments for regression model
+    building and its application to forecasting. The main scope of
+    the package is in variables selection and models specification
+    for cases of time series data. This includes promotional
+    modelling, selection between different dynamic regressions with
+    non-standard distributions of errors, selection based on cross
+    validation, solutions to the fat regression model problem and
+    more. Models developed in the package are tailored specifically
+    for forecasting purposes. So as a results there are several
+    methods that allow producing forecasts from these models and
+    visualising them.
+  license: LGPL-2.0-only
+  repository: https://github.com/cran/greybox
+
