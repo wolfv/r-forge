@@ -16,7 +16,7 @@ jobs:
       matrix:
         include:
           - { target: linux-64,  os: ubuntu-20.04 }
-          - { target: win-64,    os: windows-latest }
+          # - { target: win-64,    os: windows-latest }
           # force older macos-13 to get x86_64 runners
           - { target: osx-64,    os: macos-13 }
           - { target: osx-arm64, os: macos-14 }
@@ -43,7 +43,7 @@ jobs:
         TARGET_PLATFORM: ${{ matrix.target }}
 
       run: |
-        rattler-build build --recipe-dir . \
+        pixi run rattler-build build --recipe-dir . \
           --skip-existing=all --target-platform=$TARGET_PLATFORM \
           -c conda-forge -c https://prefix.dev/r-forge
 
@@ -56,5 +56,5 @@ jobs:
       run: |
         # ignore errors because we want to ignore duplicate packages
         for file in output/**/*.conda; do
-          rattler-build upload prefix -c r-forge "$file" || true
+          pixi run rattler-build upload prefix -c r-forge "$file" || true
         done
