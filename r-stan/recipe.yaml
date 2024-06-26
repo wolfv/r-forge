@@ -29,8 +29,6 @@ requirements:
   - r-bh >=1.75.0-0
   - r-stanheaders >=2.32.0
   - r-rcppparallel >=5.1.4
-  # - r-methods
-  # - r-stats4
   - r-inline >=0.3.19
   - r-gridextra >=2.3
   - r-loo >=2.4.1
@@ -38,8 +36,6 @@ requirements:
   - r-quickjsr
   - r-ggplot2 >=3.3.5
   run:
-  # - r-methods
-  # - r-stats4
   - r-inline >=0.3.19
   - r-gridextra >=2.3
   - r-rcpp >=1.0.7
@@ -48,6 +44,7 @@ requirements:
   - r-pkgbuild >=1.2.0
   - r-quickjsr
   - r-ggplot2 >=3.3.5
+  - r-stanheaders >=2.32.0
   # -  r-testthat >=3.0.4  # suggested
   # -  r-parallel  # suggested
   # -  r-kernsmooth  # suggested

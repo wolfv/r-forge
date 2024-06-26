@@ -1,5 +1,7 @@
 - 7.3-64 = translate to 7.3.64?
-- 
+- automatic noarch packages?!
+- Add linking to packages to run as well?!
+- stats4 - remove?
 
 ## DONE
 
