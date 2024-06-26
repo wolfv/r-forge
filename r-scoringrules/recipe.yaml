@@ -1,0 +1,60 @@
+context: {}
+
+package:
+  name: r-scoringrules
+  version: 1.1.1
+
+source:
+- url: https://cran.r-project.org/src/contrib/scoringRules_1.1.1.tar.gz
+  sha256: 393ff96e17e70c31ede7c30fff36cea2d1f7863be2339b523ab2960c6510c5e3
+
+build:
+  script:
+    content: R CMD INSTALL --build .
+    env:
+      # fix Rlog1p issue on conda-forge: 
+      # https://github.com/conda-forge/r-base-feedstock/issues/163
+      PKG_CPPFLAGS: "-DHAVE_WORKING_LOG1P"
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  - r-base >=3.00
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rcpp >=0.12.0
+  - r-mass
+  - r-knitr
+  run:
+  - r-base
+  - r-rcpp >=0.12.0
+  - r-mass
+  - r-knitr
+  # -  r-gsl >=1.8-3  # suggested
+  # -  r-hypergeo >=1.0  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-testthat  # suggested
+  # -  r-crch  # suggested
+  # -  r-ggplot2  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("scoringRules")'
+
+about:
+  homepage: https://github.com/FK83/scoringRules
+  summary: |-
+    Scoring Rules for Parametric and Simulated Distribution
+    Forecasts
+  description: |-
+    Dictionary-like reference for computing scoring rules in a
+    wide range of situations. Covers both parametric forecast
+    distributions (such as mixtures of Gaussians) and distributions
+    generated via simulation.
+  license: GPL-2.0-or-later
+  repository: https://github.com/cran/scoringRules
+

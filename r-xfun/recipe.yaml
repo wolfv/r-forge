@@ -1,0 +1,57 @@
+context: {}
+
+package:
+  name: r-xfun
+  version: '0.45'
+
+source:
+- url: https://cran.r-project.org/src/contrib/xfun_0.45.tar.gz
+  sha256: 3816f05c2fd297b40750be1a2f386f0aa4637136421f504d14b6ad9ea0993611
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+  # -  r-testit  # suggested
+  # -  r-parallel  # suggested
+  # -  r-codetools  # suggested
+  # -  r-rstudioapi  # suggested
+  # -  r-tinytex >=0.30  # suggested
+  # -  r-mime  # suggested
+  # -  r-markdown >=1.5  # suggested
+  # -  r-knitr >=1.47  # suggested
+  # -  r-htmltools  # suggested
+  # -  r-remotes  # suggested
+  # -  r-pak  # suggested
+  # -  r-rhub  # suggested
+  # -  r-renv  # suggested
+  # -  r-curl  # suggested
+  # -  r-xml2  # suggested
+  # -  r-jsonlite  # suggested
+  # -  r-magick  # suggested
+  # -  r-yaml  # suggested
+  # -  r-qs  # suggested
+  # -  r-rmarkdown  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("xfun")'
+
+about:
+  homepage: https://github.com/yihui/xfun
+  summary: Supporting Functions for Packages Maintained by 'Yihui Xie'
+  description: |-
+    Miscellaneous functions commonly used in other packages
+    maintained by 'Yihui Xie'.
+  license: 'MIT '
+  license_file: LICENSE
+  repository: https://github.com/cran/xfun
+

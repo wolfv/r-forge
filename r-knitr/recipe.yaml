@@ -1,0 +1,70 @@
+context: {}
+
+package:
+  name: r-knitr
+  version: '1.47'
+
+source:
+- url: https://cran.r-project.org/src/contrib/knitr_1.47.tar.gz
+  sha256: fadd849bf94a4e02520088a6626577c3c636227fe11c5cd7e8fcc5d51a7aa6cf
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  host:
+  - r-base
+  - r-base >=3.3.0
+  - r-evaluate >=0.15
+  - r-highr >=0.11
+  - r-xfun >=0.44
+  - r-yaml >=2.1.19
+  run:
+  - r-base
+  - r-evaluate >=0.15
+  - r-highr >=0.11
+  - r-xfun >=0.44
+  - r-yaml >=2.1.19
+  # -  r-bslib  # suggested
+  # -  r-codetools  # suggested
+  # -  r-dbi >=0.4-1  # suggested
+  # -  r-digest  # suggested
+  # -  r-formatr  # suggested
+  # -  r-gifski  # suggested
+  # -  r-gridsvg  # suggested
+  # -  r-htmlwidgets >=0.7  # suggested
+  # -  r-jpeg  # suggested
+  # -  r-juliacall >=0.11.1  # suggested
+  # -  r-magick  # suggested
+  # -  r-markdown >=1.3  # suggested
+  # -  r-png  # suggested
+  # -  r-ragg  # suggested
+  # -  r-reticulate >=1.4  # suggested
+  # -  r-rgl >=0.95.1201  # suggested
+  # -  r-rlang  # suggested
+  # -  r-rmarkdown  # suggested
+  # -  r-sass  # suggested
+  # -  r-showtext  # suggested
+  # -  r-styler >=1.2.0  # suggested
+  # -  r-targets >=0.6.0  # suggested
+  # -  r-testit  # suggested
+  # -  r-tibble  # suggested
+  # -  r-tikzdevice >=0.10  # suggested
+  # -  r-tinytex >=0.46  # suggested
+  # -  r-webshot  # suggested
+  # -  r-rstudioapi  # suggested
+  # -  r-svglite  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("knitr")'
+
+about:
+  homepage: https://yihui.org/knitr/
+  summary: A General-Purpose Package for Dynamic Report Generation in R
+  description: |-
+    Provides a general-purpose tool for dynamic report
+    generation in R using Literate Programming techniques.
+  license: GPL-2.0
+  repository: https://github.com/cran/knitr
+

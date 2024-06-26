@@ -1,0 +1,42 @@
+context: {}
+
+package:
+  name: r-evaluate
+  version: 0.24.0
+
+source:
+- url: https://cran.r-project.org/src/contrib/evaluate_0.24.0.tar.gz
+  sha256: e23d764a58e7525257d57da4ccfee9d6f63b5b3c18bf01c76818ec8c9c587fd6
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  host:
+  - r-base
+  - r-base >=4.0.0
+  run:
+  - r-base
+  # -  r-covr  # suggested
+  # -  r-ggplot2  # suggested
+  # -  r-lattice  # suggested
+  # -  r-rlang  # suggested
+  # -  r-testthat >=3.0.0  # suggested
+  # -  r-withr  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("evaluate")'
+
+about:
+  homepage: https://github.com/r-lib/evaluate
+  summary: |-
+    Parsing and Evaluation Tools that Provide More Details than the
+    Default
+  description: |-
+    Parsing and evaluation tools that make it easy to recreate
+    the command line behaviour of R.
+  license: 'MIT '
+  license_file: LICENSE
+  repository: https://github.com/cran/evaluate
+

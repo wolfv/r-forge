@@ -1,0 +1,41 @@
+context: {}
+
+package:
+  name: r-mass
+  version: 7.3.61
+
+source:
+- url: https://cran.r-project.org/src/contrib/MASS_7.3-61.tar.gz
+  sha256: 3144c8bf579dd7b7c47c259728c27f53f53e294e7ed307da434dfd144e800a90
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  - r-base >=4.4.0
+  run:
+  - r-base
+  # -  r-lattice  # suggested
+  # -  r-nlme  # suggested
+  # -  r-nnet  # suggested
+  # -  r-survival  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("MASS")'
+
+about:
+  homepage: http://www.stats.ox.ac.uk/pub/MASS4/
+  summary: Support Functions and Datasets for Venables and Ripley's MASS
+  description: |-
+    Functions and datasets to support Venables and Ripley,
+    "Modern Applied Statistics with S" (4th edition, 2002).
+  license: GPL-2.0-only  OR  GPL-3.0-only
+  repository: https://github.com/cran/MASS
+

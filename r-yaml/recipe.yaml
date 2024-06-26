@@ -1,0 +1,38 @@
+context: {}
+
+package:
+  name: r-yaml
+  version: 2.3.8
+
+source:
+- url: https://cran.r-project.org/src/contrib/yaml_2.3.8.tar.gz
+  sha256: 9ed079e2159cae214f3fefcbc4c8eb3b888ceabe902350adbdb1d181eda23fd8
+
+build:
+  script: R CMD INSTALL --build .
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+  # -  r-runit  # suggested
+
+tests:
+- script:
+  - Rscript -e 'library("yaml")'
+
+about:
+  homepage: https://github.com/vubiostat/r-yaml/
+  summary: Methods to Convert R Data to YAML and Back
+  description: |-
+    Implements the 'libyaml' 'YAML' 1.1 parser and emitter
+    (<https://pyyaml.org/wiki/LibYAML>) for R.
+  license: BSD-3-Clause
+  license_file: LICENSE
+  repository: https://github.com/cran/yaml
+
